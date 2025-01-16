@@ -10,6 +10,10 @@ import com.example.metmuseumapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        private const val id =  436535
+    }
+
     private val viewModel: ObjectViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
@@ -19,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.fetchObjectInfo(436535)
+
+
+        viewModel.fetchObjectInfo(id)
 
 
         viewModel.currentObjectLiveData.observe(this) { objectInfo ->
@@ -28,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun dataInteractor(objectInfo: ObjectInfo) {
+    private fun dataInteractor(objectInfo: ObjectInfo) {
         binding.progressBar.isGone = true
 
         Glide.with(binding.imageView).load(objectInfo.primaryImage).into(binding.imageView)
@@ -87,4 +93,6 @@ class MainActivity : AppCompatActivity() {
             binding.dimensionsTV.isGone = false
         }
     }
+
+
 }

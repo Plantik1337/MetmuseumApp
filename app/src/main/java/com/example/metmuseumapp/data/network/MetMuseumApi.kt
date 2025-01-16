@@ -1,4 +1,4 @@
-package com.example.metmuseumapp.data
+package com.example.metmuseumapp.data.network
 
 import com.example.metmuseumapp.ObjectInfo
 import retrofit2.http.GET

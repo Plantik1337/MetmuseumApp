@@ -1,4 +1,4 @@
-package com.example.metmuseumapp.data
+package com.example.metmuseumapp.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

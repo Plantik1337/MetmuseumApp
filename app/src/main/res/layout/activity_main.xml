@@ -9,7 +9,6 @@
     tools:context=".presenter.MainActivity">
 
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -26,9 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="37dp"
-        android:textColor="@color/white"
         android:fontFamily=""
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textFontWeight="700"
         android:textSize="16sp"
         android:visibility="gone"
@@ -41,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
-        android:textColor="@color/white"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textFontWeight="400"
         android:textSize="14sp"
         android:visibility="gone"
@@ -308,6 +307,8 @@
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
