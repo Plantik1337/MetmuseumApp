@@ -11,19 +11,22 @@ import kotlinx.coroutines.launch
 
 class ObjectViewModel : ViewModel() {
 
-    private val currentObjectInfo = MutableLiveData<ObjectInfo>()
-
     private lateinit var objectInteractor: ObjectInteractor
 
+    companion object {
+        private const val ID =  45734
+    }
+
+    private val currentObjectInfo = MutableLiveData<ObjectInfo>()
     val currentObjectLiveData: LiveData<ObjectInfo> = currentObjectInfo
 
-    fun fetchObjectInfo(objectId: Int) {
+    fun fetchObjectInfo() {
 
         objectInteractor = ObjectInteractorImpl()
 
         viewModelScope.launch {
             try {
-                val objectInfo = objectInteractor.getObjectById(objectId)
+                val objectInfo = objectInteractor.getObjectById(ID)
                 currentObjectInfo.postValue(objectInfo)
             } catch (e: Exception) {
                 println("Ошибка: ${e.message}")

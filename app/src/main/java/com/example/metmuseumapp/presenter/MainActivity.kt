@@ -1,6 +1,7 @@
 package com.example.metmuseumapp.presenter
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -9,10 +10,6 @@ import com.example.metmuseumapp.ObjectInfo
 import com.example.metmuseumapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        private const val id =  436535
-    }
 
     private val viewModel: ObjectViewModel by viewModels()
 
@@ -23,15 +20,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.fetchObjectInfo(id)
+        viewModel.fetchObjectInfo()
 
         viewModel.currentObjectLiveData.observe(this) { objectInfo ->
-            dataInteractor(objectInfo)
+            showData(objectInfo)
         }
 
+        binding.backButton.setOnClickListener {
+            Toast.makeText(this,"назад",Toast.LENGTH_SHORT).show()
+        }
+        binding.expandButton.setOnClickListener {
+            Toast.makeText(this,"увеличить",Toast.LENGTH_SHORT).show()
+        }
     }
 
-    private fun dataInteractor(objectInfo: ObjectInfo) {
+    private fun showData(objectInfo: ObjectInfo) {
         binding.progressBar.isGone = true
 
         Glide.with(binding.imageView)
