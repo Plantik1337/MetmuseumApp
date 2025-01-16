@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MetmuseumApp</string>
+    <string name="artist_role">ARTIST ROLE</string>
+    <string name="artist">ARTIST</string>
+    <string name="artist_bio">ARTIST BIO</string>
+    <string name="department">DEPARTMENT</string>
+    <string name="culture">CULTURE</string>
+    <string name="period">PERIOD</string>
+    <string name="medium">MEDIUM</string>
+    <string name="dimensions">DIMENSIONS</string>
+    <string name="museum_image">museum image</string>
 </resources>
