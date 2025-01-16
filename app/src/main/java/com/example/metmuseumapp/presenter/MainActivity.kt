@@ -23,10 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
         viewModel.fetchObjectInfo(id)
-
 
         viewModel.currentObjectLiveData.observe(this) { objectInfo ->
             dataInteractor(objectInfo)
@@ -37,7 +34,9 @@ class MainActivity : AppCompatActivity() {
     private fun dataInteractor(objectInfo: ObjectInfo) {
         binding.progressBar.isGone = true
 
-        Glide.with(binding.imageView).load(objectInfo.primaryImage).into(binding.imageView)
+        Glide.with(binding.imageView)
+            .load(objectInfo.primaryImage)
+            .into(binding.imageView)
 
         binding.titleTV.isGone = false
         binding.dateTV.isGone = false
