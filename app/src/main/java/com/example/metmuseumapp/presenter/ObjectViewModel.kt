@@ -6,23 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.metmuseumapp.ObjectInfo
 import com.example.metmuseumapp.domain.ObjectInteractor
-import com.example.metmuseumapp.domain.ObjectInteractorImpl
 import kotlinx.coroutines.launch
 
-class ObjectViewModel : ViewModel() {
-
-    private lateinit var objectInteractor: ObjectInteractor
+class ObjectViewModel(private val objectInteractor: ObjectInteractor) : ViewModel() {
 
     companion object {
-        private const val ID =  45734
+        private const val ID = 254473
     }
 
     private val currentObjectInfo = MutableLiveData<ObjectInfo>()
     val currentObjectLiveData: LiveData<ObjectInfo> = currentObjectInfo
 
     fun fetchObjectInfo() {
-
-        objectInteractor = ObjectInteractorImpl()
 
         viewModelScope.launch {
             try {

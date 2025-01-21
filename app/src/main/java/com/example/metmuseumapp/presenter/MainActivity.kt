@@ -2,16 +2,17 @@ package com.example.metmuseumapp.presenter
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import com.bumptech.glide.Glide
 import com.example.metmuseumapp.ObjectInfo
+import com.example.metmuseumapp.R
 import com.example.metmuseumapp.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: ObjectViewModel by viewModels()
+    private val viewModel: ObjectViewModel by viewModel()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -27,73 +28,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.backButton.setOnClickListener {
-            Toast.makeText(this,"назад",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.back), Toast.LENGTH_SHORT).show()
         }
         binding.expandButton.setOnClickListener {
-            Toast.makeText(this,"увеличить",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.expand), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun showData(objectInfo: ObjectInfo) {
         binding.progressBar.isGone = true
 
-        Glide.with(binding.imageView)
-            .load(objectInfo.primaryImage)
-            .into(binding.imageView)
+        Glide.with(binding.imageView).load(objectInfo.primaryImage).into(binding.imageView)
 
         binding.titleTV.isGone = false
         binding.dateTV.isGone = false
 
         binding.titleTV.text = objectInfo.title
-        binding.dateTV.text = "${objectInfo.objectBeginDate} - ${objectInfo.objectEndDate}"
-
-        if (objectInfo.artistRole.isNotEmpty()) {
-            binding.artistRole.isGone = false
-            binding.artistRoleTV.text = objectInfo.artistRole
-            binding.artistRoleTV.isGone = false
+        binding.dateTV.text = buildString {
+            append(objectInfo.objectBeginDate)
+            append(" - ")
+            append(objectInfo.objectEndDate)
         }
 
-        if (objectInfo.artistDisplayName.isNotEmpty()) {
-            binding.artistTitle.isGone = false
-            binding.artistTV.text = objectInfo.artistDisplayName
-            binding.artistTV.isGone = false
-        }
+        binding.artistRole.setInfo(getString(R.string.artist_role), objectInfo.artistRole)
+        binding.artist.setInfo(getString(R.string.artist), objectInfo.artistDisplayName)
+        binding.artistBio.setInfo(getString(R.string.artist_bio), objectInfo.artistDisplayBio)
+        binding.department.setInfo(getString(R.string.department), objectInfo.department)
+        binding.culture.setInfo(getString(R.string.culture), objectInfo.culture)
+        binding.period.setInfo(getString(R.string.period), objectInfo.period)
+        binding.medium.setInfo(getString(R.string.medium), objectInfo.medium)
+        binding.dimensions.setInfo(getString(R.string.dimensions), objectInfo.dimensions)
 
-        if (objectInfo.artistDisplayBio.isNotEmpty()) {
-            binding.artistBio.isGone = false
-            binding.artistBioTV.text = objectInfo.artistDisplayBio
-            binding.artistBioTV.isGone = false
-        }
-
-        if (objectInfo.department.isNotEmpty()) {
-            binding.departmentTitle.isGone = false
-            binding.departmentTV.text = objectInfo.department
-            binding.departmentTV.isGone = false
-        }
-
-        if (objectInfo.culture.isNotEmpty()) {
-            binding.cultureTitle.isGone = false
-            binding.cultureTV.text = objectInfo.culture
-            binding.cultureTV.isGone = false
-        }
-
-        if (objectInfo.period.isNotEmpty()) {
-            binding.periodTitle.isGone = false
-            binding.periodTV.text = objectInfo.period
-            binding.periodTV.isGone = false
-        }
-
-        if (objectInfo.medium.isNotEmpty()) {
-            binding.mediumTitle.isGone = false
-            binding.mediumTV.text = objectInfo.medium
-            binding.mediumTV.isGone = false
-        }
-
-        if (objectInfo.dimensions.isNotEmpty()) {
-            binding.dimensionsTitle.isGone = false
-            binding.dimensionsTV.text = objectInfo.dimensions
-            binding.dimensionsTV.isGone = false
-        }
     }
 
 

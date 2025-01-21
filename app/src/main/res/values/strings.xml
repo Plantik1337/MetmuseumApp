@@ -9,4 +9,6 @@
     <string name="medium">MEDIUM</string>
     <string name="dimensions">DIMENSIONS</string>
     <string name="museum_image">museum image</string>
+    <string name="back">назад</string>
+    <string name="expand">увеличить</string>
 </resources>
