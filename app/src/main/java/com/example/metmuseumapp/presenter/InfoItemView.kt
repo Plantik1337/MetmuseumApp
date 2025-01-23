@@ -30,6 +30,7 @@ class InfoItemView @JvmOverloads constructor(
         } else {
             binding.titleTV.isGone = true
             binding.valueTV.isGone = true
+            this.isGone = true
         }
     }
 }

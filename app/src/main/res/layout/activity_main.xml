@@ -8,7 +8,6 @@
     android:background="#1c1b1f"
     tools:context=".presenter.MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class ObjectViewModel(private val objectInteractor: ObjectInteractor) : ViewModel() {
 
     companion object {
-        private const val ID = 254473
+        private const val ID = 354573
     }
 
     private val currentObjectInfo = MutableLiveData<ObjectInfo>()
