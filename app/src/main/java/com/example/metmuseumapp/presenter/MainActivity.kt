@@ -2,17 +2,22 @@ package com.example.metmuseumapp.presenter
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.metmuseumapp.ObjectInfo
 import com.example.metmuseumapp.R
 import com.example.metmuseumapp.databinding.ActivityMainBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: ObjectViewModel by viewModel()
+    //private val viewModel: ObjectViewModel by viewModel()
+
+    private lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel: ObjectViewModel by viewModels { viewModelFactory }
 
     private lateinit var binding: ActivityMainBinding
 

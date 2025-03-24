@@ -7,8 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.metmuseumapp.ObjectInfo
 import com.example.metmuseumapp.domain.ObjectInteractor
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ObjectViewModel(private val objectInteractor: ObjectInteractor) : ViewModel() {
+class ObjectViewModel @Inject constructor(private val objectInteractor: ObjectInteractor) :
+    ViewModel() {
 
     companion object {
         private const val ID = 354573
