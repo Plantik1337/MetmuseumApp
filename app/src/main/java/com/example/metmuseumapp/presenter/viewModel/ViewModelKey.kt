@@ -1,4 +1,4 @@
-package com.example.metmuseumapp
+package com.example.metmuseumapp.presenter.viewModel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

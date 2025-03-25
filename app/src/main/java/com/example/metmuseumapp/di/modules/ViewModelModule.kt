@@ -1,10 +1,10 @@
-package com.example.metmuseumapp.di
+package com.example.metmuseumapp.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.metmuseumapp.ViewModelFactory
-import com.example.metmuseumapp.ViewModelKey
-import com.example.metmuseumapp.presenter.ObjectViewModel
+import com.example.metmuseumapp.presenter.viewModel.ViewModelFactory
+import com.example.metmuseumapp.presenter.viewModel.ViewModelKey
+import com.example.metmuseumapp.presenter.viewModel.ObjectViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

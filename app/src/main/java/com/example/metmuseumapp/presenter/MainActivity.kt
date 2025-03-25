@@ -7,24 +7,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.example.metmuseumapp.di.MetmuseumApp
 import com.example.metmuseumapp.ObjectInfo
 import com.example.metmuseumapp.R
 import com.example.metmuseumapp.databinding.ActivityMainBinding
+import com.example.metmuseumapp.presenter.viewModel.ObjectViewModel
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    //private val viewModel: ObjectViewModel by viewModel()
-
-    private lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel: ObjectViewModel by viewModels { viewModelFactory }
 
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MetmuseumApp).applicationComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         viewModel.fetchObjectInfo()
 

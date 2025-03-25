@@ -1,5 +1,6 @@
-package com.example.metmuseumapp.presenter
+package com.example.metmuseumapp.presenter.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +14,7 @@ class ObjectViewModel @Inject constructor(private val objectInteractor: ObjectIn
     ViewModel() {
 
     companion object {
-        private const val ID = 354573
+        private const val ID = 436535
     }
 
     private val currentObjectInfo = MutableLiveData<ObjectInfo>()
@@ -24,6 +25,7 @@ class ObjectViewModel @Inject constructor(private val objectInteractor: ObjectIn
         viewModelScope.launch {
             try {
                 val objectInfo = objectInteractor.getObjectById(ID)
+                Log.i("data", objectInfo.toString())
                 currentObjectInfo.postValue(objectInfo)
             } catch (e: Exception) {
                 println("Ошибка: ${e.message}")
