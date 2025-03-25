@@ -1,7 +1,8 @@
 package com.example.metmuseumapp.domain
 
 import com.example.metmuseumapp.ObjectInfo
+import kotlinx.coroutines.flow.Flow
 
 interface ObjectInteractor {
-    suspend fun getObjectById(id: Int): ObjectInfo
+    fun getObjectById(id: Int): Flow<ObjectInfo>
 }
